@@ -12,4 +12,8 @@ export class HttpService {
   loginApi(data:object){
   return this.http.post( `${this.baseUrl}/login`,data)
   }
+
+  registerApi(data:object){
+    return this.http.post( `${this.baseUrl}/userSignUp`,data)
+  }
 }
