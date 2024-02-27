@@ -1,0 +1,15 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+    <mat-drawer #drawer [mode]="'over'" [opened]="true">
+        <div class="links">
+        <span routerLink="/dashboard/notes">notes</span><br><br>
+        <span>edit</span><br><br>
+        <span>label</span><br><br>
+        <span routerLink="/dashboard/archive">archive</span><br><br>
+        <span routerLink="/dashboard/trash">trash</span>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+  

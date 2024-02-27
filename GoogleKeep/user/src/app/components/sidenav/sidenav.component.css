@@ -1,0 +1,5 @@
+::ng-deep .app-sidenav-cnt {
+    width: 100%;
+    display: flex;
+    height: 600px;
+}

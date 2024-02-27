@@ -2,8 +2,8 @@
     <div class="header">
         <mat-toolbar>
             <mat-toolbar-row>
-                <button (click)="drawer.toggle();">
-                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu" class="menuicon"></mat-icon>
+                <button mat-icon-button>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="menu" class="menuicon" ></mat-icon>
                 </button>
                 <img src="https://www.gstatic.com/images/branding/product/2x/keep_2020q4_48dp.png" alt="logo" width="40px" class="logo">
                 <h1 id="heading">Keep</h1>
@@ -15,20 +15,4 @@
                 </mat-toolbar-row>
         </mat-toolbar>
     </div>
-    <div class="content">
-        <mat-drawer-container class="example-container" [hasBackdrop]="false">
-            <mat-drawer #drawer [mode]="'over'" [opened]="true">
-                  <span routerLink="/dashboard/notes">Notes</span><br><br>
-                  <span>Edit</span><br><br>
-                  <span>Label</span><br><br>
-                  <span routerLink="/dashboard/archive">Archive</span><br><br>
-                  <span routerLink="/dashboard/trash">Trash</span>
-            </mat-drawer>
-            <mat-drawer-content>
-              <router-outlet></router-outlet>
-            </mat-drawer-content>
-        </mat-drawer-container>
-    <div class="container-content">
-    </div>
-</div>
 </div>

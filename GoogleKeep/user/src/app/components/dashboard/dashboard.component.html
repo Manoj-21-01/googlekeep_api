@@ -1,1 +1,20 @@
 <app-keep></app-keep>
+<!-- <app-sidenav></app-sidenav> -->
+<div class="note-cnt">
+    <div class="takenote">
+        <input type="text" placeholder="Take a note..." id="takenote" oncontextmenu="addInput()">
+    </div>
+    <div class="description">
+        <input type="text" id="inputContainer">
+        <script>
+            function addInput() {
+                const inputContainer = document.getElementById('inputContainer');
+                const newInput = document.createElement('input');
+                newInput.type = 'text';
+                newInput.setAttribute('placeholder', 'Enter text');
+                newInput.classList.add('dynamic-input');
+                inputContainer.appendChild(newInput);
+            }
+        </script>
+    </div>
+</div>
