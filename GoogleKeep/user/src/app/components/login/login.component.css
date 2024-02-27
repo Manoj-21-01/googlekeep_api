@@ -1,0 +1,189 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@media only screen and (max-width:768px){
+    .container {
+      margin-top: 5%;
+      margin-left: 22.5%;
+      width: 60vw;
+      height: auto;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+    .content{
+      display: flex;
+      justify-content: center;
+    }
+    .google{
+      padding-top: 15%;
+    }
+    .google span {
+      font-size: 25px;
+    }
+    .l1 {
+      color: blue;
+    }
+    .l2 {
+      color: red;
+    }
+    .l3 {
+      color: yellow;
+    }
+    .l4 {
+      color: blue;
+    }
+    .l5 {
+      color: green;
+    }
+    .l6 {
+      color: red;
+    }
+    .login {
+      display: flex;
+      justify-content: center;
+    }
+    #login {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      margin-left: 10%;
+      margin-bottom: 25px;
+      width: 44vw;
+    }
+    #password{
+        position: relative;
+        bottom: 50px;
+      padding: 10px;
+      margin-left: 10%;
+      margin-bottom: 20px;
+      width: 44vw;
+    }
+    #pass {
+      margin-top: -70px;
+      margin-bottom: 20px;
+      margin-left: 45px;
+    }
+    #email {
+      margin-top: -30px;
+      margin-bottom: 40px;
+      margin-left: 45px;
+    }
+    #forgot {
+        position: relative;
+        top: -10px;
+      padding-left: 10%;
+      padding-bottom: 20px;
+      color: blue;
+    }
+    .footer {
+        position: relative;
+        top: -10px;
+      display: flex;
+      padding-left: 10%;
+    }
+    #createAccount {
+        position: relative;
+        top: 0px;
+      color: blue;
+      text-decoration: none;
+      position: relative;
+      bottom: 10px;
+    }
+    #log {
+      position: relative;
+      left: 25%;
+      top: -10px;
+      color: white;
+      background-color: blue;
+      border-radius: 2px;
+      padding: 12px 8px;
+    }
+    }
+    @media only screen and (min-width:769px){
+    .container {
+      margin-top: 5%;
+      margin-left: 35%;
+      width: 30vw;
+      height: auto;
+      border: 1px solid black;
+      border-radius: 5px;
+    }
+    .content{
+      display: flex;
+      justify-content: center;
+    }
+    .google{
+      padding-top: 15%;
+    }
+    .google span {
+      font-size: 25px;
+    }
+    .l1 {
+      color: blue;
+    }
+    .l2 {
+      color: red;
+    }
+    .l3 {
+      color: yellow;
+    }
+    .l4 {
+      color: blue;
+    }
+    .l5 {
+      color: green;
+    }
+    .l6 {
+      color: red;
+    }
+    .login {
+      display: flex;
+      justify-content: center;
+    }
+    #login {
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+      margin-left: 50px;
+      width: 250px;
+    }
+    #password{
+      position: relative;
+      bottom: 20px;
+      padding: 10px;
+      margin-left: 50px;
+      width: 250px;
+    }
+    #pass {
+      margin-top: -20px;
+      margin-left: 65px;
+    }
+    #email {
+      margin-bottom: 10px;
+      margin-left: 65px;
+    }
+    #forgot {
+        position: relative;
+        bottom: 10px;
+      padding-left: 50px;
+      padding-bottom: 20px;
+      color: blue;
+    }
+    .footer {
+      display: flex;
+      padding-left: 50px;
+    }
+    #createAccount {
+      color: blue;
+      text-decoration: none;
+      position: relative;
+      bottom: 10px;
+    }
+    #log {
+      position: relative;
+      bottom: 25px;
+      left: 130px;
+      color: white;
+      background-color: blue;
+      border-radius: 2px;
+      padding: 12px 8px;
+    }
+    }
