@@ -1,0 +1,49 @@
+.takenote {
+    width: 100%;
+}
+
+#takenote {
+    height: 30px;
+    width: 50%;
+    margin: 5% 25%;
+    border-radius: 6px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.icon {
+    position: relative;
+    bottom: 95px;
+    left: 500px;
+    margin-left: 25%;
+}
+
+#icon {
+    padding-right: 30px;
+}
+.inner-body{
+    position: relative;
+    bottom: 50px;
+    height: 100px;
+    width: 50%;
+    margin: 0% 25%;
+    border-radius: 6px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#takeNote {
+    border: none;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 480px;
+    border-radius: 6px;
+}
+
+#desc {
+    border: none;
+    border-radius: 6px;
+    padding: 25px 0px;
+    padding-left: 10px;
+    padding-right: 480px;
+}
