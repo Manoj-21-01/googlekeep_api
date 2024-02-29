@@ -1,0 +1,33 @@
+<div class="main" >
+    <div class="container">
+        <div class="input-card" *ngIf="takeNote; else addNote" (click)="handleCreateNote('open')">
+            <input type="text" name="text" class="input" pattern="\d+" placeholder="Take a note...">
+            <mat-icon svgIcon="tick-icon" aria-hidden="false" aria-label="reminder icon" class="icon"></mat-icon> 
+            <mat-icon svgIcon="brush-icon" aria-hidden="false" aria-label="collaborator icon" class="icon1"></mat-icon>             
+            <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="img icon" class="icon2"></mat-icon> 
+        </div>
+        <ng-template #addNote>
+        <div class="input-card2">
+          <div class="create-note-title-cnt">
+            <input [(ngModel)]="title" type="text" placeholder="Title">
+          </div>
+            <!-- <input type="text" name="text" class="input1" pattern="\d+" placeholder="Title">
+            <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin icon" class="icon-pin"></mat-icon>  -->
+            <div class="create-note-desc-cnt">
+            <input [(ngModel)]="description" type="text"class="input1" pattern="\d+" placeholder="Description">
+            </div>
+            <div class="icons-div">
+                <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon-archive"></mat-icon> 
+                <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon-remainder"></mat-icon> 
+                <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="pin icon" class="color-palatte-icon"></mat-icon> 
+                <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="pin icon" class="collabrator-icon"></mat-icon> 
+                <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="pin icon" class="img-icon"></mat-icon> 
+                <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="pin icon" class="menu-icon"></mat-icon>
+                <button mat-button class="button" (click)="handleCreateNote('close')">Close</button> 
+                <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="pin icon" class="undo-icon"></mat-icon>
+                <mat-icon svgIcon="redo-icon" aria-hidden="false" aria-label="pin icon" class="redo-icon"></mat-icon>
+            </div>
+        </div>
+        </ng-template>
+    </div>
+</div>  

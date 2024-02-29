@@ -1,26 +1,8 @@
-<div class="note-cnt">
-    <div class="takenote">
-        <input type="text" placeholder="Title" id="takenote">
-        <div class="icon">
-        <mat-icon svgIcon="tick-icon" aria-hidden="false" aria-label="reminder icon" id="icon"></mat-icon> 
-      <mat-icon svgIcon="brush-icon" aria-hidden="false" aria-label="collabrator icon" id="icon"></mat-icon>             
-      <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="img icon"></mat-icon>
-      </div>
+<div>
+    <app-create-note (updateList)="updateNoteList($event)"></app-create-note>
+</div>
+<div *ngFor="let noteObj of noteList">
+    <div class="note-card">
+          <app-notecard [noteDetails]="noteObj"></app-notecard>
     </div>
-    <div class="inner-body">
-        <div class="title">
-              <input type="text" placeholder="Title" id="takeNote">
-        </div>
-        <div class="desc">
-              <input type="text" placeholder="Take a note" id="desc">
-              <mat-icon svgIcon="remind-icon" aria-hidden="false" aria-label="img icon"></mat-icon>
-              <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="img icon"></mat-icon>
-              <mat-icon svgIcon="remainder-icon" aria-hidden="false" aria-label="remainder icon"></mat-icon>
-              <button mat-button>Close</button>
-        </div>
-  </div>
-  <div *ngFor="let noteObj of noteList">
-    <app-notecard></app-notecard>
-  </div>
-
 </div>

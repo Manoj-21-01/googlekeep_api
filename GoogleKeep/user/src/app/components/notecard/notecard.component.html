@@ -1,4 +1,38 @@
-<!-- <mat-icon svgIcon="remainder-icon" aria-hidden="false" aria-label="remainder icon"> -->
-    <div style="width: 100px; height:100px; border:1px solid black;">
-        <span>This is a notecard</span>
+<div class="notecard-cnt" [style.backgroundColor]="noteDetails.color">
+    <span class="notecard-title-cnt">{{noteDetails.title}}</span>
+    <span class="notecard-desc-cnt">{{noteDetails.description}}</span>
+    <div class="notecard-icons-cnt">
+        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon-archive"></mat-icon> 
+        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon-remainder"></mat-icon> 
+        <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="pin icon" class="color-palatte-icon"></mat-icon> 
+        <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="pin icon" class="collabrator-icon"></mat-icon> 
+        <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="pin icon" class="img-icon"></mat-icon> 
+        <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="pin icon" class="menu-icon"></mat-icon>
+        <!-- <button mat-button class="button" (click)="handleCreateNote()">Close</button>  -->
+        <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="pin icon" class="undo-icon"></mat-icon>
+        <mat-icon svgIcon="redo-icon" aria-hidden="false" aria-label="pin icon" class="redo-icon"></mat-icon>
     </div>
+</div>  
+    <!-- <div class="container">
+        <div class="input-card" *ngIf="takeNote; else addNote" (click)="handleCreateNote()">
+            <input type="text" name="text" class="input" pattern="\d+" placeholder="Empty note">
+        </div>
+        <ng-template #addNote>
+        <div class="input-card2">
+            <input type="text" name="text" class="input1" pattern="\d+" placeholder="Title">
+            <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin icon" class="icon-pin"></mat-icon> 
+            <input type="text" name="text" class="input2" pattern="\d+" placeholder="Take note...">
+            <div class="icons-div">
+                <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon-archive"></mat-icon> 
+                <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon-remainder"></mat-icon> 
+                <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="pin icon" class="color-palatte-icon"></mat-icon> 
+                <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="pin icon" class="collabrator-icon"></mat-icon> 
+                <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="pin icon" class="img-icon"></mat-icon> 
+                <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="pin icon" class="menu-icon"></mat-icon>
+                <button mat-button class="button" (click)="handleCreateNote()">Close</button> 
+                <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="pin icon" class="undo-icon"></mat-icon>
+                <mat-icon svgIcon="redo-icon" aria-hidden="false" aria-label="pin icon" class="redo-icon"></mat-icon>
+            </div>
+        </div>
+        </ng-template>
+    </div> -->

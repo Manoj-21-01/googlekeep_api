@@ -25,6 +25,7 @@ import { ArchiveContainerComponent } from './components/archive-container/archiv
 import { TrashContainerComponent } from './components/trash-container/trash-container.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { CreateNoteComponent } from './components/create-note/create-note.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     ArchiveContainerComponent,
     TrashContainerComponent,
     DashboardComponent,
-    SidenavComponent
+    SidenavComponent,
+    CreateNoteComponent
   ],
   imports: [
     BrowserModule,
