@@ -1,8 +1,14 @@
 <div>
     <app-create-note (updateList)="updateNoteList($event)"></app-create-note>
 </div>
-<div *ngFor="let noteObj of noteList">
-    <div class="note-card">
+<!-- <div *ngIf="gridView" else listView>
+
+</div>
+<ng-template #listView>
+    
+</ng-template> -->
+<div class="note-card">
+    <div *ngFor="let noteObj of noteList" class="note">
           <app-notecard [noteDetails]="noteObj"></app-notecard>
     </div>
 </div>

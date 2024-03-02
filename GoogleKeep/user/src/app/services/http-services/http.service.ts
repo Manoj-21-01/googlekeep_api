@@ -8,7 +8,6 @@ export class HttpService {
   private authHeader = new HttpHeaders({
     'Accept': "application/json",
     Authorization: localStorage.getItem('token') || ""
-    // Authorization: "PlWHaoD8PYKbVQsGde2pnzqw350tD1HwNNlaBPQyE3CsJe2DOdF1HKHruCIHIiBj"
   })
   constructor(public http: HttpClient) {
 
@@ -22,7 +21,11 @@ export class HttpService {
     return this.http.post( `${this.baseUrl}/user/userSignUp`,data)
   }
   getNoteList(){
-    return this.http.get( `${this.baseUrl}/notes/getNotesList`, {headers:this.authHeader});
+    return this.http.get(`${this.baseUrl}/notes/getNotesList`,{headers:this.authHeader})
   }
+
+  addNote(data: object){
+    return this.http.post(`${this.baseUrl}/notes/addNotes`,data,{headers:this.authHeader})
+  }
 
 }

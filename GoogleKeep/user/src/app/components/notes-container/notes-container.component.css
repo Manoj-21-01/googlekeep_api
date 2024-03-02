@@ -1,0 +1,15 @@
+.note-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    width: 1200px;
+}
+
+.note {
+    position: relative;
+    right: 100px;
+    top: 10px;
+    margin-bottom: 30px;
+}

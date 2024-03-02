@@ -4,10 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ARCHIVE_ICON, BRUSH_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, MORE_ICON, REDO_ICON, REMINDER_ICON, TICK_ICON, UNDO_ICON } from 'src/app/assests/svg-icons';
 import { NoteService } from 'src/app/services/note-services/note.service';
 interface NoteObj {
-  "title": string;
-  "description": string;
-  "color": string;
-  "id": string;
+  "title":string,
+  "description":string,
+  "color": string,
+  "id":string
 }
 @Component({
   selector: 'app-notes-container',
@@ -15,40 +15,15 @@ interface NoteObj {
   styleUrls: ['./notes-container.component.css']
 })
 export class NotesContainerComponent {
-  noteList:NoteObj[]=[ 
+  noteList:NoteObj[]=[
     {
-      "title":"Manoj",
-      "description":"Hello there my self manoj!",
-      "color":"#ffffff",
-      "id":"121"
-    },
-    {
-      "title":"Manoj",
-      "description":"Hello there my self manoj!",
-      "color":"#green",
-      "id":"122"
-    },
-    {
-      "title":"Manoj",
-      "description":"Hello there my self manoj!",
-      "color":"#black",
+      "title":"Harshit",
+      "description":"Hi how are you",
+      "color": "#ffffff",
       "id":"123"
-    },
-    {
-      "title":"Manoj",
-      "description":"Hello there my self manoj!",
-      "color":"#blue",
-      "id":"124"
-    },
-    {
-      "title":"Manoj",
-      "description":"Hello there my self manoj!",
-      "color":"#gray",
-      "id":"125"
     }
-    
   ]
-  constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public noteServie: NoteService) {
+  constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public noteService: NoteService) {
     iconRegistry.addSvgIconLiteral('tick-icon', sanitizer.bypassSecurityTrustHtml(TICK_ICON));
     iconRegistry.addSvgIconLiteral('brush-icon', sanitizer.bypassSecurityTrustHtml(BRUSH_ICON));
     iconRegistry.addSvgIconLiteral('img-icon', sanitizer.bypassSecurityTrustHtml(IMG_ICON));
@@ -64,13 +39,14 @@ export class NotesContainerComponent {
 
   }
   ngOnInit(): void {
-    // this.noteServie.getNoteListCall().subscribe((result: any)=>{this.noteList=result.data.data
-    // console.log(this.noteList);
-    // },(error)=>{console.log(error)})
+    this.noteService.getNoteListCall().subscribe((result: any)=>{this.noteList=result.data.data
+    console.log(this.noteList);
+    },(error)=>{console.log(error)})
   }
 
-  updateNoteList($event:NoteObj){
+  updateNoteList($event:NoteObj ){
     console.log($event);
-    this.noteList = [$event, ...this.noteList]
+    this.noteList=[$event, ...this.noteList]
   }
+
 }
