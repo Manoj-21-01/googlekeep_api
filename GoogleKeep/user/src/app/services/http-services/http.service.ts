@@ -4,6 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HttpService {
+  postService(arg0: string, data: {}) {
+    throw new Error('Method not implemented.');
+  }
+  getService(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   baseUrl: string = "https://fundoonotes.incubation.bridgelabz.com/api"
   private authHeader = new HttpHeaders({
     'Accept': "application/json",
@@ -26,6 +32,7 @@ export class HttpService {
 
   addNote(data: object){
     return this.http.post(`${this.baseUrl}/notes/addNotes`,data,{headers:this.authHeader})
-  }
+  }
+
 
 }

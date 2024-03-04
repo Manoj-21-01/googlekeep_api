@@ -10,3 +10,18 @@ mat-drawer-content {
     flex-direction: column;
     align-items: flex-start;
   }
+  .note-icon {
+    margin-left: 15px;
+    margin-right: 8px;
+    margin-top: 5px;
+  }
+  .icon {
+    margin-left: 15px;
+    margin-right: 8px;
+  }
+
+  .redirect {
+    position: relative;
+    bottom: 6px;
+    margin-right: 5px;
+  }

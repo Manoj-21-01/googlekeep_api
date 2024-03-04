@@ -15,8 +15,10 @@ interface NoteObj {
 
 export class CreateNoteComponent  {
   takeNote: boolean=true
+  marginBottom = 300
   title:string =""
   description: string=""
+  divWidth: number = 550;
   @Output() updateList= new EventEmitter <NoteObj>()
 
   constructor(public noteService:NoteService){

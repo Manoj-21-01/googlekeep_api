@@ -1,7 +1,7 @@
 <div class="main" >
     <div class="container">
-        <div class="input-card" *ngIf="takeNote; else addNote" (click)="handleCreateNote('open')">
-            <input type="text" name="text" class="input" pattern="\d+" placeholder="Take a note...">
+        <div class="input-card" *ngIf="takeNote; else addNote" (click)="handleCreateNote('open')"> 
+            <input type="text" name="text" class="input" placeholder="Take a note..." [ngStyle]="{'margin-bottom.px': marginBottom}">
             <mat-icon svgIcon="tick-icon" aria-hidden="false" aria-label="reminder icon" class="icon"></mat-icon> 
             <mat-icon svgIcon="brush-icon" aria-hidden="false" aria-label="collaborator icon" class="icon1"></mat-icon>             
             <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="img icon" class="icon2"></mat-icon> 
@@ -9,12 +9,12 @@
         <ng-template #addNote>
         <div class="input-card2">
           <div class="create-note-title-cnt">
-            <input [(ngModel)]="title" type="text" placeholder="Title">
+            <input [(ngModel)]="title" type="text" class="input1" placeholder="Title">
           </div>
             <!-- <input type="text" name="text" class="input1" pattern="\d+" placeholder="Title">
             <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin icon" class="icon-pin"></mat-icon>  -->
             <div class="create-note-desc-cnt">
-            <input [(ngModel)]="description" type="text"class="input1" pattern="\d+" placeholder="Description">
+            <input [(ngModel)]="description" type="text" class="input1" placeholder="Description">
             </div>
             <div class="icons-div">
                 <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon-archive"></mat-icon> 

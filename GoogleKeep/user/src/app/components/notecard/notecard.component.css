@@ -9,17 +9,17 @@
 }
 .notecard-icons-cnt{
     display:flex;
-    gap:5%;
+    gap:8%;
     position: relative;
     top: 55px;
 }
 .notecard-cnt {
     border: 1px solid black;
-    width: 260px;
+    width: 240px;
     height: 100px;
     position: relative;
     top: 100px;
-    left: 150px;
+    left: 190px;
 }
 
 .notecard-title-cnt {
