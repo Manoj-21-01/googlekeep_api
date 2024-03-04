@@ -11,10 +11,10 @@
           <div class="firstName">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="First Name*" formControlName="firstName" id="firstName">
+            <input matInput placeholder="First Name*" formControlName="firstName">
           </mat-form-field>
-          <div style="color: red;" *ngIf="submitted && f?.['firstName']?.errors?.['minlength']">First Name should contain atleast 3 characters</div>
-            <div style="color: red;" *ngIf="submitted && f?.['firstName']?.errors?.['required']">First Name is required</div>
+          <div style="color: red;" *ngIf="submitted && f?.['firstName']?.errors?.['minlength']" id="validator-cnt">First Name should contain atleast 3 characters</div>
+            <div style="color: red;" *ngIf="submitted && f?.['firstName']?.errors?.['required']" id="validator-cnt">First Name is required</div>
         </div>
         <span id="names">ln</span>
         <div class="lastName">
@@ -22,8 +22,8 @@
           <mat-label>Last Name</mat-label>
           <input matInput placeholder="Last Name*" formControlName="lastName" id="lastName">
         </mat-form-field>
-        <div style="color: red;" *ngIf="submitted && f?.['lastName']?.errors?.['minlength']">Last Name should contain atleast 3 characters</div>
-          <div style="color: red;" *ngIf="submitted && f?.['lastName']?.errors?.['required']">Last Name is required</div>
+        <div style="color: red;" *ngIf="submitted && f?.['lastName']?.errors?.['minlength']" id="validator-cnt">Last Name should contain atleast 3 characters</div>
+          <div style="color: red;" *ngIf="submitted && f?.['lastName']?.errors?.['required']" id="validator-cnt">Last Name is required</div>
       </div>
         </div>
 
@@ -37,28 +37,33 @@
           <input matInput placeholder="username" formControlName="email" id="username">
           <label for="username" class="condition">you can use letters, numbers & periods</label>
         </mat-form-field>
-        <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['required']">Email is required</div>
-          <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['email']">Email must be a valid email address</div>
+        <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['required']" id="validator-cnt">Email is required</div>
+          <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['email']" id="validator-cnt">Email must be a valid email address</div>
         <p class="email">Use my current email instead</p>
         <div class="password">
-           <mat-form-field appearance="outline">
-            <mat-label>Password</mat-label>
-            <input matInput placeholder="Password*" formControlName="password" id="password">
-          </mat-form-field>
-          <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['required']">Password is required</div>
-          <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['minlength']">Password must be atleast 6 characters</div>
+          <div class="pwd-cnt">
+            <div class="passwird-cnt">
+              <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Password*" formControlName="password" id="password" type="password">
+              </mat-form-field>
+              <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['required']" id="pwd-validator-cnt">Password is required</div>
+              <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['minlength']" id="pwd-validator-cnt">Password must be atleast 6 characters</div>
+            </div>
           <span id="names">ln</span>
-          <mat-form-field appearance="outline">
+          <div class="confirm-password-cnt">
+            <mat-form-field appearance="outline">
             <mat-label>Confirm</mat-label>
-            <input matInput placeholder="Confirm*" id="confirmPassword">
-          </mat-form-field>
+            <input matInput placeholder="Confirm*" id="confirmPassword" type="password">
+            </mat-form-field>
+          </div>
+          </div>
         </div>
         <p>Use 8 or more characters with a mix of letters, numbers & symbols</p>
         <input type="checkbox" name="Show" id="show">Show Password
         <div class="footer">
           <p><a href="http://localhost:4200/login" class="signin">Sign in instead</a></p>
           <button mat-raised-button color="primary" id="next">Next</button>
-          
         </div>
     </div>
 </div>

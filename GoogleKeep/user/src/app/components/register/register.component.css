@@ -58,16 +58,25 @@
   margin-top: 30px;
   color: darkviolet;
 }
+
 .password {
   margin-top: 0px;
 }
 #names {
-  color: white;
+  display: none;
+}
+#validator-cnt {
+  position: relative;
+  bottom: 20px;
+}
+#pwd-validator-cnt {
+  position: relative;
+  bottom: 20px;
 }
 .condition {
   width: 50vw;
   margin-left: -190px;
-  margin-top: 50px;
+  margin-top: 55px;
 }
 label {
     position: absolute;
@@ -139,8 +148,13 @@ label {
 #names {
   color: white;
 }
-#firstName {
-  gap: 10px;
+#validator-cnt {
+  position: relative;
+  bottom: 20px;
+}
+#pwd-validator-cnt {
+  position: relative;
+  bottom: 20px;
 }
 .image {
   float: right;
@@ -149,13 +163,20 @@ label {
   position: relative;
   top: -55px;
   left: -10px;
+  font-size: 13px;
+}
+.pwd-cnt {
+  display: flex;
+}
+#confirmPassword {
+  position: relative;
 }
 .security {
   position: relative;
-  top: -30px;
+  top: -20px;
 }
 .email {
-  margin-top: 0px;
+  margin-top: 20px;
   color: darkviolet;
 }
 .password {
@@ -164,7 +185,7 @@ label {
 .condition {
   width: 300px;
   height: 20px;
-  margin-top: 40px;
+  margin-top: 60px;
   margin-left: -180px;
 }
 label {

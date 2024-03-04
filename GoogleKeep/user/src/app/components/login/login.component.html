@@ -24,12 +24,12 @@
             <input matInput placeholder="Email or phone*" formControlName="email">
             </mat-form-field>
             <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['required']" id="email">Email is required</div>
-            <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['email']">Email must be a valid email address</div>
+            <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['email']" id="email">Email must be a valid email address</div>
           </div>
           <div class="password">
           <mat-form-field appearance="outline" id="password">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Password*" formControlName="password">
+            <input matInput placeholder="Password*" formControlName="password" type="password">
             </mat-form-field>
             <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['required']" id="pass">Password is required</div>
           </div>

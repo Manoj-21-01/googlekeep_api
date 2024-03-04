@@ -16,12 +16,12 @@ interface NoteObj {
 })
 export class NotesContainerComponent {
   noteList:NoteObj[]=[
-    {
-      "title":"Harshit",
-      "description":"Hi how are you",
-      "color": "#ffffff",
-      "id":"123"
-    }
+    // {
+    //   "title":"Harshit",
+    //   "description":"Hi how are you",
+    //   "color": "#ffffff",
+    //   "id":"123"
+    // }
   ]
   constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public noteService: NoteService) {
     iconRegistry.addSvgIconLiteral('tick-icon', sanitizer.bypassSecurityTrustHtml(TICK_ICON));
