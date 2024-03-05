@@ -7,7 +7,9 @@ interface NoteObj {
   "title":string,
   "description":string,
   "color": string,
-  "id":string
+  "id":string,
+  "isArchived": boolean,
+  "isDeleted": boolean
 }
 @Component({
   selector: 'app-notes-container',
@@ -16,12 +18,6 @@ interface NoteObj {
 })
 export class NotesContainerComponent {
   noteList:NoteObj[]=[
-    // {
-    //   "title":"Harshit",
-    //   "description":"Hi how are you",
-    //   "color": "#ffffff",
-    //   "id":"123"
-    // }
   ]
   constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public noteService: NoteService) {
     iconRegistry.addSvgIconLiteral('tick-icon', sanitizer.bypassSecurityTrustHtml(TICK_ICON));

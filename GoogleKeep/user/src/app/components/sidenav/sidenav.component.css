@@ -25,3 +25,19 @@ mat-drawer-content {
     bottom: 6px;
     margin-right: 5px;
   }
+
+  .archive-redirect {
+    position: relative;
+    bottom: 27px;
+    left: 48px;
+  }
+  .trash-icon {
+    position: relative;
+    bottom: 20px;
+    left: 15px;
+  }
+  .trash-redirect {
+    position: relative;
+    bottom: 6px;
+    left: 8px;
+  }

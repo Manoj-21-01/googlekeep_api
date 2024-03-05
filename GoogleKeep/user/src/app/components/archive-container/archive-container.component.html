@@ -1,9 +1,5 @@
-<!-- notes.component.html -->
-<div class="notes-container">
-    <h2>My Notes</h2>
-    <ul>
-      <li *ngFor="let note of notes">{{ note }}</li>
-    </ul>
-    <button (click)="archiveNotes()">Archive Notes</button>
+<div class="aNotes">
+  <div  *ngFor="let note of archivedNotes">
+        <app-notecard [noteDetails]="note"></app-notecard>
   </div>
-  
+</div>

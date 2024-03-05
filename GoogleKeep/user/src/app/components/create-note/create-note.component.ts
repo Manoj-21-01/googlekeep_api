@@ -5,7 +5,9 @@ interface NoteObj {
   "title":string,
   "description":string,
   "color": string,
-  "id":string
+  "id":string,
+  "isArchived": boolean,
+  "isDeleted": boolean
 }
 @Component({
   selector: 'app-create-note',
@@ -15,10 +17,8 @@ interface NoteObj {
 
 export class CreateNoteComponent  {
   takeNote: boolean=true
-  marginBottom = 300
   title:string =""
   description: string=""
-  divWidth: number = 550;
   @Output() updateList= new EventEmitter <NoteObj>()
 
   constructor(public noteService:NoteService){
@@ -33,7 +33,8 @@ export class CreateNoteComponent  {
           "title" : this.title,
           "description" : this.description,
           // "isPined": false,
-          // "isArchived": false,
+          "isArchived": false,
+          "isDeleted": false,
           "color": "#ffffff",
           // "reminder": "",
           "id":"12346"

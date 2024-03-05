@@ -7,14 +7,17 @@
         <span class="redirect">Reminders</span><br><br>
         <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
         <span class="redirect">Edit labels</span><br><br>
-        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
-        <span routerLink="/dashboard/archive" class="redirect">Archive</span><br><br>
-        <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
-        <span routerLink="/dashboard/trash" class="redirect">Trash</span>
+        <div (click)="archiveClick">
+        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon>
+        </div> 
+        <span routerLink="/dashboard/archive" class="archive-redirect">Archive</span><br><br>
+        <div class="trash-icon">
+        <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="pin icon"></mat-icon> 
+        <span routerLink="/dashboard/trash" class="trash-redirect">Trash</span>
+        </div>
         </div>
     </mat-drawer>
     <mat-drawer-content>
         <router-outlet></router-outlet>
     </mat-drawer-content>
 </mat-drawer-container>
-  

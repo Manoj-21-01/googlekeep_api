@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 @Injectable({
   providedIn: 'root'
 })
@@ -34,5 +35,16 @@ export class HttpService {
     return this.http.post(`${this.baseUrl}/notes/addNotes`,data,{headers:this.authHeader})
   }
 
-
+  archiveNote(requestBody: object) {
+    return this.http.post(`${this.baseUrl}/notes/archiveNotes`, requestBody, { headers: this.authHeader });
+  }
+  getArchivedNotes(){
+    return this.http.get(`${this.baseUrl}/notes/getArchiveNotesList`, { headers: this.authHeader });
+  }
+  trashNote(requestBody: object) {
+    return this.http.post(`${this.baseUrl}/notes/trashNotes`, requestBody, { headers: this.authHeader });
+  }
+  getTrashNotes() {
+    return this.http.get(`${this.baseUrl}/notes/getTrashNotesList`, { headers: this.authHeader });
+  }
 }

@@ -1,5 +1,16 @@
-import { Component } from '@angular/core';
+// archive.component.ts
+import { Component, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note-services/note.service';
+
+interface NoteObj {
+  title: string;
+  description: string;
+  color: string;
+  id: string;
+  isArchived: boolean;
+  isDeleted: boolean;
+}
+
 
 @Component({
   selector: 'app-archive-container',
@@ -7,18 +18,24 @@ import { NoteService } from 'src/app/services/note-services/note.service';
   styleUrls: ['./archive-container.component.css']
 })
 export class ArchiveContainerComponent {
-  notes: string[] = []; // Initialize an empty array for notes
+  archivedNotes: NoteObj[]= [];
 
-  constructor(private noteService: NoteService) {} // Inject the NoteService
+  constructor(public noteService: NoteService) {
+    this.getArchivedNotes();
+   }
 
-  ngOnInit() {
-    // Fetch initial notes (you can load them from an API or elsewhere)
-    this.notes = this.noteService.getNotes();
-  }
+  // ngOnInit(): void {
+  //   this.getArchivedNotes();
+  // }
 
-  archiveNotes() {
-    // Call the service method to archive notes
-    this.noteService.archiveNotes(this.notes);
-    this.notes = []; // Clear the notes array after archiving
+  getArchivedNotes(): void {
+    this.noteService.getArchivedNotesCall().subscribe(
+      (result: any)=>{
+        this.archivedNotes=result.data.data;
+       console.log(this.archivedNotes);},
+      error => {
+        console.error('Error fetching archived notes:', error);
+      }
+    );
   }
 }

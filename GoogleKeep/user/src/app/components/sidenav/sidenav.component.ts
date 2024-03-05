@@ -4,7 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { ARCHIVE_ICON, EDIT_ICON, NOTE_ICON, REMINDER_ICON, TRASH_ICON } from 'src/app/assests/svg-icons';
 import { DataService } from 'src/app/services/data-services/data.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -16,6 +16,7 @@ import { DataService } from 'src/app/services/data-services/data.service';
 export class SidenavComponent implements OnInit , OnDestroy {
   subscription!: Subscription;
   drawerState: boolean = false
+  router: any;
   constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public dataServie: DataService){
     iconRegistry.addSvgIconLiteral('note-icon', sanitizer.bypassSecurityTrustHtml(NOTE_ICON));
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
@@ -23,6 +24,10 @@ export class SidenavComponent implements OnInit , OnDestroy {
     iconRegistry.addSvgIconLiteral('archive-icon', sanitizer.bypassSecurityTrustHtml(ARCHIVE_ICON));
     iconRegistry.addSvgIconLiteral('trash-icon', sanitizer.bypassSecurityTrustHtml(TRASH_ICON));
   }
+  archiveClick()
+    {
+      this.router.navigate(['/dashboard/archive']);
+    }
   ngOnInit(): void {
     this.subscription = this.dataServie.currentDrawerState.subscribe((result)=>this.drawerState=result)
   }

@@ -10,6 +10,9 @@
     left:30%;
     position: absolute;
 }
+.note-container {
+    padding-bottom: 1000px;
+}
 .input-card{
     width: 100%;
     height: 20%;
@@ -23,11 +26,10 @@
     box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
     outline: none;
     color: dimgray;
+    gap: 100vh;
   }
   
-  .input:invalid {
-    animation: justshake 0.1s forwards;
-  }
+ 
   
   @keyframes justshake {
     25% {
@@ -50,15 +52,16 @@
     position: absolute;
     left: 75%;
     top:20%;
+    padding-right: 20px;
 }
 .icon1{
     position: absolute;
-    left: 83%;
+    left: 85%;
     top:20%;
 }
 .icon2{
     position: absolute;
-    left: 91%;
+    left: 95%;
     top:20%;
 }
 .input-card2{
