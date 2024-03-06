@@ -3,9 +3,23 @@
     <span class="notecard-desc-cnt">{{noteDetails.description}}</span>
     <div class="notecard-icons-cnt">
         <div *ngIf="!noteDetails.isDeleted" style="display:flex;">
-        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon-remainder"></mat-icon> 
-        <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="pin icon" class="color-palatte-icon"></mat-icon> 
-        <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="pin icon" class="collabrator-icon"></mat-icon> 
+        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon-remainder"></mat-icon>
+        <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="pin icon" class="collabrator-icon"></mat-icon>
+        <mat-icon class="color-palatte-icon" [matMenuTriggerFor]="colorMenu">
+            <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="color pallatte icon"></mat-icon>
+        </mat-icon>
+            <mat-menu #colorMenu="matMenu" class="colorMenu">                  
+                  <button mat-menu-item>
+                  <button class="colorOptions"  (click)="changeColor('#B4DDD3')" style="background-color: #B4DDD3"></button>
+                  <button class="colorOptions"  (click)="changeColor('#E2F6D3')" style="background-color: #E2F6D3"></button>
+                  <button class="colorOptions"  (click)="changeColor('#D4E4ED')" style="background-color: #D4E4ED"></button>
+                  <button class="colorOptions"  (click)="changeColor('#AECCDC')" style="background-color: #AECCDC"></button>
+                  <button class="colorOptions"  (click)="changeColor('#D3BFDB')" style="background-color: #D3BFDB"></button>
+                  <button class="colorOptions"  (click)="changeColor('#F6E2DD')" style="background-color: #F6E2DD"></button>
+                  <button class="colorOptions"  (click)="changeColor('#E9E3D4')" style="background-color: #E9E3D4"></button>
+                  <button class="colorOptions"  (click)="changeColor('#EFEFF1')" style="background-color: #EFEFF1"></button>
+                  </button>
+            </mat-menu> 
         <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="pin icon" class="img-icon"></mat-icon> 
         <mat-icon *ngIf="noteDetails.isArchived" (click)="unarchiveNote(noteDetails)" svgIcon="unarchive-icon" aria-hidden="false" aria-label="unarchive icon"></mat-icon>
         <mat-icon *ngIf="!noteDetails.isArchived" (click)="archiveNote(noteDetails)" svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon"></mat-icon>

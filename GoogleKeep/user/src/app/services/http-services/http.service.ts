@@ -51,4 +51,7 @@ export class HttpService {
   {
     return this.http.post(`${this.baseUrl}/notes/deleteForeverNotes`,deleteNote,{headers: this.authHeader});    
   }
+  changeColor(colorNote: object){
+    return this.http.post(`${this.baseUrl}/notes/changesColorNotes`,colorNote, {headers: this.authHeader});
+  }
 }

@@ -5,6 +5,7 @@ import { HttpService } from 'src/app/services/http-services/http.service';
 import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_ICON, MORE_ICON, DELETE_FOREVER_ICON, TRASH_ICON, UNARCHIVE_ICON, RESTORE_ICON } 
 from 'src/app/assests/svg-icons';
 import { NoteService } from 'src/app/services/note-services/note.service';
+
 interface NoteObj {
     "title":string,
     "description":string,
@@ -37,6 +38,22 @@ export class NotecardComponent {
     iconRegistry.addSvgIconLiteral('trash-icon', sanitizer.bypassSecurityTrustHtml(TRASH_ICON));
     iconRegistry.addSvgIconLiteral('restore-icon', sanitizer.bypassSecurityTrustHtml(RESTORE_ICON));
     iconRegistry.addSvgIconLiteral('delete-forever-icon', sanitizer.bypassSecurityTrustHtml(DELETE_FOREVER_ICON));
+  }
+
+  // colour functionality
+  changeColor(color: string): void {
+    this.noteDetails.color = color;
+    console.log(this.noteDetails);
+     const obj1={
+      "noteIdList":[this.noteDetails.id],
+      "color":this.noteDetails.color
+     }
+     this.noteService.colorNoteCall(obj1).subscribe(
+      ()=>{
+      console.log("Color applied successfully");
+     },
+     error => {console.error('Error:',error);}
+    );
   }
 
   archiveNote(noteDetails : any): void {
