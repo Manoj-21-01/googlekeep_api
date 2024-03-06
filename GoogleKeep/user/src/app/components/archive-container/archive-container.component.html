@@ -1,5 +1,5 @@
-<div class="aNotes">
-  <div  *ngFor="let note of archivedNotes">
+<div class="archivenotes">
+  <div  *ngFor="let note of filteredArchivedNotes">
         <app-notecard [noteDetails]="note"></app-notecard>
   </div>
 </div>

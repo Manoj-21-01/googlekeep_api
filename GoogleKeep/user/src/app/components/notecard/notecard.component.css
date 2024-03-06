@@ -21,6 +21,14 @@
     top: 100px;
     left: 90px;
 }
+/* .notecard-cnt {
+        width:240px;
+        height:100px;
+        display:flex;
+        flex-wrap:wrap;
+        gap:2%;
+        padding-left: 5%;
+} */
 
 .notecard-title-cnt {
     position: relative;

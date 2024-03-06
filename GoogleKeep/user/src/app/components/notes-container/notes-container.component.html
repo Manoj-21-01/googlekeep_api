@@ -2,7 +2,7 @@
     <app-create-note (updateList)="updateNoteList($event)"></app-create-note>
 </div>
 <div class="note-card" >
-    <div *ngFor="let noteObj of noteList">
+    <div *ngFor="let noteObj of filteredNoteList">
           <app-notecard [noteDetails]="noteObj"></app-notecard>
           <br>
     </div>

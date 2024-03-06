@@ -1,7 +1,8 @@
-.Notes{
+.trashnotes {
     width:100vw;
-    height:100vh;
+    height:40vh;
     display:flex;
+    flex-wrap:wrap;
     gap:2%;
-    padding: 5%;
+    padding-left: 5%;
 }
