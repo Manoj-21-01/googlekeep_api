@@ -19,4 +19,7 @@ export class UserService {
   registerUser(data:object){
     return this.http.registerApi(data);
   }
+  logOut(){
+    return this.http.logOutUser();
+  }
 }

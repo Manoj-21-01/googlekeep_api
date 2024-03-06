@@ -54,4 +54,7 @@ export class HttpService {
   changeColor(colorNote: object){
     return this.http.post(`${this.baseUrl}/notes/changesColorNotes`,colorNote, {headers: this.authHeader});
   }
+  logOutUser(){
+    return this.http.post(`${this.baseUrl}/user/logout`,{},{headers: this.authHeader});
+  }
 }
