@@ -44,4 +44,8 @@ export class NoteService {
   getTrashNotesCall(): Observable<any> {
     return this.httpService.getTrashNotes();
   }
+
+  deleteForeverCall(data: object){
+    return this.httpService.deleteForever(data);
+  }
 }

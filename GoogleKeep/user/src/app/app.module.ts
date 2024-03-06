@@ -26,6 +26,7 @@ import { TrashContainerComponent } from './components/trash-container/trash-cont
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CreateNoteComponent } from './components/create-note/create-note.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CreateNoteComponent } from './components/create-note/create-note.compon
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

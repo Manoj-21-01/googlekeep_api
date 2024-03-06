@@ -2,11 +2,16 @@
     <span class="notecard-title-cnt">{{noteDetails.title}}</span>
     <span class="notecard-desc-cnt">{{noteDetails.description}}</span>
     <div class="notecard-icons-cnt">
+        <div *ngIf="!noteDetails.isDeleted" style="display:flex;">
         <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon-remainder"></mat-icon> 
         <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="pin icon" class="color-palatte-icon"></mat-icon> 
         <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="pin icon" class="collabrator-icon"></mat-icon> 
         <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="pin icon" class="img-icon"></mat-icon> 
-        <mat-icon (click)="archiveNote(noteDetails)" svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon"></mat-icon> 
-        <mat-icon (click)="trashNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon" class="trash-icon"></mat-icon>
+        <mat-icon *ngIf="noteDetails.isArchived" (click)="unarchiveNote(noteDetails)" svgIcon="unarchive-icon" aria-hidden="false" aria-label="unarchive icon"></mat-icon>
+        <mat-icon *ngIf="!noteDetails.isArchived" (click)="archiveNote(noteDetails)" svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon"></mat-icon>
+        </div>
+        <mat-icon *ngIf="noteDetails.isDeleted" (click)="deletePermanently(noteDetails)" svgIcon="delete-forever-icon" aria-hidden="false" aria-label="restore icon"></mat-icon>
+        <mat-icon *ngIf="!noteDetails.isDeleted" (click)="deleteNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon"></mat-icon>
+        <mat-icon *ngIf="noteDetails.isDeleted" (click)="restoreNote(noteDetails)" svgIcon="restore-icon" aria-hidden="false" aria-label="restore icon"></mat-icon>
     </div>
 </div>

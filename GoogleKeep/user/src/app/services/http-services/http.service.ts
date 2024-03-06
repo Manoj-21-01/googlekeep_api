@@ -47,4 +47,8 @@ export class HttpService {
   getTrashNotes() {
     return this.http.get(`${this.baseUrl}/notes/getTrashNotesList`, { headers: this.authHeader });
   }
+  deleteForever(deleteNote: object)
+  {
+    return this.http.post(`${this.baseUrl}/notes/deleteForeverNotes`,deleteNote,{headers: this.authHeader});    
+  }
 }
