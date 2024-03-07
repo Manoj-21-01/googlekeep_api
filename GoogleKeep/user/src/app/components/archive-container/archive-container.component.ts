@@ -19,7 +19,7 @@ interface NoteObj {
   styleUrls: ['./archive-container.component.css']
 })
 export class ArchiveContainerComponent implements OnInit{
-  @Input() viewMode: boolean = true;
+  viewMode: boolean = true;
   archivedNotes: NoteObj[]= [];
   filteredArchivedNotes: NoteObj[]= [];
 

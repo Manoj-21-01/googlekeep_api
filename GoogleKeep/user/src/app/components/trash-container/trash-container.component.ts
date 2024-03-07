@@ -16,7 +16,7 @@ interface NoteObj {
   styleUrls: ['./trash-container.component.css']
 })
 export class TrashContainerComponent {
-  @Input() viewMode: boolean = true;
+  viewMode: boolean = true;
   trashNotes: NoteObj[] = [];
   constructor(public noteService: NoteService, public viewModeService: ViewModeService) { 
     this.getDeletedNotes();
