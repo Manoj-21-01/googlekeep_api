@@ -1,7 +1,7 @@
 <div class="notehead">
     <app-create-note (updateList)="updateNoteList($event)"></app-create-note>
 </div>
-<div class="note-card" >
+<div class="note-card" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}">
     <div *ngFor="let noteObj of filteredNoteList">
           <app-notecard [noteDetails]="noteObj"></app-notecard>
           <br>

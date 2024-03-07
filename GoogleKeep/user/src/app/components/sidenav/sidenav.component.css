@@ -14,30 +14,36 @@ mat-drawer-content {
     margin-left: 15px;
     margin-right: 8px;
     margin-top: 5px;
+    cursor: pointer;
   }
   .icon {
     margin-left: 15px;
     margin-right: 8px;
+    cursor: pointer;
   }
 
   .redirect {
     position: relative;
     bottom: 6px;
     margin-right: 5px;
+    cursor: pointer;
   }
 
   .archive-redirect {
     position: relative;
     bottom: 27px;
     left: 48px;
+    cursor: pointer;
   }
   .trash-icon {
     position: relative;
     bottom: 20px;
     left: 15px;
+    cursor: pointer;
   }
   .trash-redirect {
     position: relative;
     bottom: 6px;
     left: 8px;
+
   }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpService } from 'src/app/services/http-services/http.service';
@@ -20,8 +20,13 @@ interface NoteObj {
   templateUrl: './notecard.component.html',
   styleUrls: ['./notecard.component.css']
 })
-export class NotecardComponent {
+export class NotecardComponent implements OnInit {
+  viewMode: boolean=true;
   @Input() noteDetails!: NoteObj;
+  ngOnInit(){ }
+  logRemainder(){
+    console.log("Remainder");
+  }
 
   constructor(
     iconRegistry: MatIconRegistry,
@@ -39,7 +44,6 @@ export class NotecardComponent {
     iconRegistry.addSvgIconLiteral('restore-icon', sanitizer.bypassSecurityTrustHtml(RESTORE_ICON));
     iconRegistry.addSvgIconLiteral('delete-forever-icon', sanitizer.bypassSecurityTrustHtml(DELETE_FOREVER_ICON));
   }
-
   // colour functionality
   changeColor(color: string): void {
     this.noteDetails.color = color;
@@ -69,6 +73,7 @@ export class NotecardComponent {
      },
      error => {console.error('Error:',error);}
     );
+    this.ngOnInit();
   }
 
   //unarchive note

@@ -20,11 +20,16 @@
 
 .icon {
     margin-left: 20px;
+    cursor: pointer;
 }
-
+.profile-logo {
+    position: relative;
+    top: 5.5px;
+    right: 0px;
+    background-color: none;
+}
 .appicon {
-    margin-left: 50px;
-    margin-right: 20px;
+    margin-left: 100px;
 }
 .sidenav {
     width: 8.5%;

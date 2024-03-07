@@ -9,10 +9,14 @@
                 <h1 id="heading">Keep</h1>
                 <input type="search" matInput placeholder="Search" id="search">
                 <mat-icon aria-hidden="false" aria-label="Example refresh icon" fontIcon="refresh" id="icons"></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="Example list-view icon" fontIcon="list-view" class="icon"></mat-icon>
+                <mat-icon *ngIf="!gridView" aria-hidden="false" aria-label="Example list-view icon" fontIcon="list-view" class="icon" matTooltip="Grid view" (click)="handleView()"></mat-icon>
+                <mat-icon *ngIf="gridView" aria-hidden="false" aria-label="Example grid-view icon" svgIcon="grid-view" class="icon" matTooltip="List view" (click) = "handleView()"></mat-icon>
                 <mat-icon aria-hidden="false" aria-label="Example settings icon" fontIcon="settings" class="icon"></mat-icon>
                 <mat-icon aria-hidden="false" aria-label="Example app icon" fontIcon="apps" class="appicon"></mat-icon>
-                <img src="https://luminarelectric.ca/wp-content/uploads/2023/01/M_icon.png" alt="account_logo" width="25px" (click)="logOutUser()">
+                <button mat-button [matMenuTriggerFor]="menu"><img src="https://luminarelectric.ca/wp-content/uploads/2023/01/M_icon.png" alt="account_logo" width="25px" class="profile-logo"></button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="logOutUser()" mat-menu-item>Logout</button>
+                    </mat-menu>
                 </mat-toolbar-row>
         </mat-toolbar>
     </div>
