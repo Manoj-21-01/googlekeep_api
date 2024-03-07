@@ -1,5 +1,5 @@
-<div class="archivenotes">
-  <div  *ngFor="let note of filteredArchivedNotes">
-        <app-notecard [noteDetails]="note"></app-notecard>
+<div class="archivenotes" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}">
+  <div *ngFor="let note of filteredArchivedNotes">
+        <app-notecard [noteDetails]="note" [viewMode]="viewMode"></app-notecard>
   </div>
 </div>

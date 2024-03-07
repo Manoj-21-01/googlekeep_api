@@ -15,6 +15,7 @@
                   <button class="colorOptions"  (click)="changeColor('#D4E4ED')" style="background-color: #D4E4ED"></button>
                   <button class="colorOptions"  (click)="changeColor('#AECCDC')" style="background-color: #AECCDC"></button>
                   <button class="colorOptions"  (click)="changeColor('#D3BFDB')" style="background-color: #D3BFDB"></button>
+                  <button class="colorOptions"  (click)="changeColor('#ffffff')" style="background-color: #ffffff"></button>
                   <button class="colorOptions"  (click)="changeColor('#F6E2DD')" style="background-color: #F6E2DD"></button>
                   <button class="colorOptions"  (click)="changeColor('#E9E3D4')" style="background-color: #E9E3D4"></button>
                   <button class="colorOptions"  (click)="changeColor('#EFEFF1')" style="background-color: #EFEFF1"></button>
@@ -24,9 +25,9 @@
         <mat-icon *ngIf="noteDetails.isArchived" (click)="unarchiveNote(noteDetails)" svgIcon="unarchive-icon" aria-hidden="false" aria-label="unarchive icon" class="unarchive-icon" matTooltip="Unarchive"></mat-icon>
         <mat-icon *ngIf="!noteDetails.isArchived" (click)="archiveNote(noteDetails)" svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon" class="archive-icon" matTooltip="Archive"></mat-icon>
         </div>
-        <div class="delete-cnt">
+        <div class="delete-cnt" >
         <mat-icon *ngIf="noteDetails.isDeleted" (click)="deletePermanently(noteDetails)" svgIcon="delete-forever-icon" aria-hidden="false" aria-label="delete forever icon"  class="delete-forever-icon" matTooltip="Delete forever"></mat-icon>
-        <mat-icon *ngIf="!noteDetails.isDeleted" (click)="deleteNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon" matTooltip="Delete"></mat-icon>
+        <mat-icon *ngIf="!noteDetails.isDeleted" (click)="deleteNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon" matTooltip="Delete" class="delete-cnt-icon" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}"></mat-icon>
         <mat-icon *ngIf="noteDetails.isDeleted" (click)="restoreNote(noteDetails)" svgIcon="restore-icon" aria-hidden="false" aria-label="restore icon" matTooltip="Restore"></mat-icon>
         </div>
     </div>

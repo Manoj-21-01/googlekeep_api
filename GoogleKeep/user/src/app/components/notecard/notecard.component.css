@@ -1,36 +1,27 @@
-/* .note{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width:70%;
-    height:70%;
-    gap:5%;
-} */
-.notecard-icons-cnt{
-    display:flex;
-    gap:8%;
-    position: relative;
-    top: 52px;
-}
-.notecard-cnt.grid-view {
-    border: 1px solid black;
+.notecard-cnt {
+  border-radius: 5px;
+  border: 1px solid black;
     width: 240px;
     height: 100px;
     position: relative;
     top: 100px;
     left: 90px;
 }
-.notecard-cnt.list-view {
-  width: 600px;
+.notecard-icons-cnt{
+    display:flex;
+    gap:8%;
+    position: relative;
+    top: 52px;
 }
-
+.notecard-cnt.list-view {
+  margin-left: 27.5%;
+  width: 41.5vw;
+}
 .notecard-title-cnt {
     position: relative;
     top: 5px;
     left: 5px;
 }
-
 .notecard-desc-cnt {
     position: absolute;
     top: 30px;
@@ -38,6 +29,12 @@
 }
 .delete-cnt {
     cursor: pointer;
+    display: flex;
+    gap: 1px;
+}
+.delete-cnt-icon.list-view {
+  position: relative;
+  right: 30px;
 }
 .delete-forever-icon {
   margin-right: 15px;

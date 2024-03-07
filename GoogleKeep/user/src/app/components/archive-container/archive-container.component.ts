@@ -1,6 +1,7 @@
 // archive.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NoteService } from 'src/app/services/note-services/note.service';
+import { ViewModeService } from 'src/app/services/view-mode-services/view-mode-services.service';
 
 interface NoteObj {
   title: string;
@@ -17,20 +18,27 @@ interface NoteObj {
   templateUrl: './archive-container.component.html',
   styleUrls: ['./archive-container.component.css']
 })
-export class ArchiveContainerComponent {
+export class ArchiveContainerComponent implements OnInit{
+  @Input() viewMode: boolean = true;
   archivedNotes: NoteObj[]= [];
   filteredArchivedNotes: NoteObj[]= [];
 
-  constructor(public noteService: NoteService) {
+  constructor(public noteService: NoteService, public viewModeService: ViewModeService) {
     this.getArchivedNotes();
+    this.viewModeService.viewMode$.subscribe(mode => this.viewMode = mode);
    }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   getArchivedNotes(): void {
     this.noteService.getArchivedNotesCall().subscribe(
       (result: any)=>{
         this.archivedNotes=result.data.data;
         this.filteredArchivedNotes=this.archivedNotes.filter(notes => notes.isArchived && !notes.isDeleted);
-       console.log(this.archivedNotes);},
+       console.log(this.archivedNotes);
+      this.ngOnInit();
+      },
       error => {
         console.error('Error fetching archived notes:', error);
       }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NoteService } from 'src/app/services/note-services/note.service';
+import { ViewModeService } from 'src/app/services/view-mode-services/view-mode-services.service';
 interface NoteObj {
   title: string;
   description: string;
@@ -15,9 +16,11 @@ interface NoteObj {
   styleUrls: ['./trash-container.component.css']
 })
 export class TrashContainerComponent {
+  @Input() viewMode: boolean = true;
   trashNotes: NoteObj[] = [];
-  constructor(public noteService: NoteService) { 
+  constructor(public noteService: NoteService, public viewModeService: ViewModeService) { 
     this.getDeletedNotes();
+    this.viewModeService.viewMode$.subscribe(mode => this.viewMode = mode);
   }
   getDeletedNotes(): void {
     this.noteService.getTrashNotesCall().subscribe(

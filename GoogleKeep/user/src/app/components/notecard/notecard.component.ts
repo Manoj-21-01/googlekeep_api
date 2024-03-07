@@ -21,8 +21,8 @@ interface NoteObj {
   styleUrls: ['./notecard.component.css']
 })
 export class NotecardComponent implements OnInit {
-  viewMode: boolean=true;
   @Input() noteDetails!: NoteObj;
+  @Input() viewMode: boolean = true;
   ngOnInit(){ }
   logRemainder(){
     console.log("Remainder");

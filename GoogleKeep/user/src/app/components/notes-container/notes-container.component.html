@@ -3,7 +3,7 @@
 </div>
 <div class="note-card" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}">
     <div *ngFor="let noteObj of filteredNoteList">
-          <app-notecard [noteDetails]="noteObj"></app-notecard>
+          <app-notecard [noteDetails]="noteObj" [viewMode]="viewMode"></app-notecard>
           <br>
     </div>
 </div>
