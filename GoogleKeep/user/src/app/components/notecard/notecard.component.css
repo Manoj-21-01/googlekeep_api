@@ -4,14 +4,17 @@
     width: 240px;
     height: 100px;
     position: relative;
-    top: 100px;
-    left: 90px;
+    top: 35px;
+    left: 150px;
 }
 .notecard-icons-cnt{
     display:flex;
     gap:8%;
     position: relative;
     top: 52px;
+}
+.notecard-cnt.top-shift {
+  margin-top: 100px;
 }
 .notecard-cnt.list-view {
   margin-left: 27.5%;

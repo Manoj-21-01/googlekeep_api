@@ -1,4 +1,4 @@
-<div class="notecard-cnt" [style.backgroundColor]="noteDetails.color" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}">
+<div class="notecard-cnt" [style.backgroundColor]="noteDetails.color" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode, 'top-shift': !takeNote}">
     <span class="notecard-title-cnt">{{noteDetails.title}}</span>
     <span class="notecard-desc-cnt">{{noteDetails.description}}</span>
     <div class="notecard-icons-cnt">

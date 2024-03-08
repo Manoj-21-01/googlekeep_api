@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { HttpService } from 'src/app/services/http-services/http.service';
 import { NoteService } from 'src/app/services/note-services/note.service';
+import { ShiftService } from 'src/app/services/shift-services/shift.service';
 
 interface NoteObj {
   "title":string,
@@ -22,8 +24,8 @@ export class CreateNoteComponent  {
   @Output() updateList= new EventEmitter <NoteObj>()
   noteDetails: any;
 
-  constructor(public noteService:NoteService){
-    
+  constructor(public noteService:NoteService, public httpService: HttpService, public shiftService:ShiftService){
+    this.shiftService.check(this.takeNote);
   }
 
   changeColor(color: string): void {
@@ -42,6 +44,7 @@ export class CreateNoteComponent  {
   }
   handleCreateNote(action : string ){
     this.takeNote=!this.takeNote
+    this.shiftService.check(this.takeNote);
     if (action =='close'){
       // we have to add api here
         const noteObj:NoteObj = {

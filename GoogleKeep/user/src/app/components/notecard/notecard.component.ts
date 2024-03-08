@@ -5,6 +5,7 @@ import { HttpService } from 'src/app/services/http-services/http.service';
 import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_ICON, MORE_ICON, DELETE_FOREVER_ICON, TRASH_ICON, UNARCHIVE_ICON, RESTORE_ICON } 
 from 'src/app/assests/svg-icons';
 import { NoteService } from 'src/app/services/note-services/note.service';
+import { ShiftService } from 'src/app/services/shift-services/shift.service';
 
 interface NoteObj {
     "title":string,
@@ -23,6 +24,7 @@ interface NoteObj {
 export class NotecardComponent implements OnInit {
   @Input() noteDetails!: NoteObj;
   @Input() viewMode: boolean = true;
+  takeNote: boolean = true;
   ngOnInit(){ }
   logRemainder(){
     console.log("Remainder");
@@ -32,7 +34,8 @@ export class NotecardComponent implements OnInit {
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
     private httpService: HttpService,
-    public noteService: NoteService
+    public noteService: NoteService,
+    public shiftService: ShiftService
   ) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('collabrator-icon', sanitizer.bypassSecurityTrustHtml(COLLABRATOR_ICON));
@@ -43,6 +46,7 @@ export class NotecardComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('trash-icon', sanitizer.bypassSecurityTrustHtml(TRASH_ICON));
     iconRegistry.addSvgIconLiteral('restore-icon', sanitizer.bypassSecurityTrustHtml(RESTORE_ICON));
     iconRegistry.addSvgIconLiteral('delete-forever-icon', sanitizer.bypassSecurityTrustHtml(DELETE_FOREVER_ICON));
+    this.shiftService.shiftReqd$.subscribe((data) => this.takeNote=data);
   }
   // colour functionality
   changeColor(color: string): void {
