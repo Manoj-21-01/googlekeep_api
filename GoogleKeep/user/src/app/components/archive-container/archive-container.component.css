@@ -3,8 +3,8 @@
       height:40vh;
       display:flex;
       flex-wrap:wrap;
-      gap:2%;
-      padding-left: 5%;
+      gap:1.5%;
+      row-gap: 6%;
 }
 
 .archivenotes.list-view {
@@ -12,6 +12,7 @@
       flex-direction: column;
       flex-wrap: nowrap;
       width: 50vw;
-      margin-left: 20px;
+      margin-left: 75px;
       row-gap: 6%;
 }
+

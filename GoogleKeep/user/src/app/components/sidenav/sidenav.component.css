@@ -1,3 +1,4 @@
+@media only screen and (min-width: 768px){
 ::ng-deep .app-sidenav-cnt {
     display: flex;
     height: 600px;
@@ -46,4 +47,51 @@ mat-drawer-content {
     bottom: 6px;
     left: 8px;
 
+  }
+}
+  @media only screen and (max-width: 769px) {
+    mat-drawer-content {
+      width:1300px;
+      height: 530px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .note-icon {
+      margin-left: 15px;
+      margin-right: 8px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+    .icon {
+      margin-left: 15px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+  
+    .redirect {
+      position: relative;
+      bottom: 6px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+  
+    .archive-redirect {
+      position: relative;
+      bottom: 27px;
+      left: 48px;
+      cursor: pointer;
+    }
+    .trash-icon {
+      position: relative;
+      bottom: 20px;
+      left: 15px;
+      cursor: pointer;
+    }
+    .trash-redirect {
+      position: relative;
+      bottom: 6px;
+      left: 8px;
+  
+    }
   }

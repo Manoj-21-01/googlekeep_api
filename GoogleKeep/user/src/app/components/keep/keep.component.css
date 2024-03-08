@@ -1,3 +1,4 @@
+@media only screen and (min-width: 768px) {
 .menuicon {
     border-radius: 0px;
 }
@@ -35,23 +36,50 @@
     width: 8.5%;
     position: fixed;
 }
-.content {
-    display: flex;
-    flex-direction: row;
 }
-.container-content {
-    margin-left: 10%;
+
+/* for responsive design */
+@media only screen and (max-width: 769px) {
+    .menuicon {
+        border-radius: 0px;
+    }
+    .container {
+        width: 500px;
+    }
+    .logo {
+        margin-left: 2px;
+    }
+    #heading {
+        margin-left: 10px;
+    }
+    #search {
+        margin-left: 30px;
+        width: 220px;
+        border-radius: 5px;
+    }
+    
+    #icons {
+        margin-left: 5px;
+        display: none;
+    }
+    
+    .icon {
+        margin-left: 5px;
+        display: none;
+        cursor: pointer;
+    }
+    .profile-logo {
+        position: relative;
+        top: 5.5px;
+        right: 0px;
+        background-color: none;
+    }
+    .appicon {
+        margin-left: 25px;
+        display: none;
+    }
+    .sidenav {
+        width: 8.5%;
+        position: fixed;
+    }
 }
-.example-container {
-    width: 130vw;
-    height: 80vh;
-    margin: 12px;
-    border: 1px solid #555;
-  }
-  
-  mat-drawer-content {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
