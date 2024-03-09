@@ -35,8 +35,8 @@ export class LoginComponent {
         }).subscribe((result: any)=>{
           localStorage.setItem("token",result.id);
           this.router.navigate(['/dashboard/notes']);
+          alert("User logged in successfully")
           console.log(result);},error=>{console.log(error);});
-
       console.log(this.loginForm.value);
     }
 }

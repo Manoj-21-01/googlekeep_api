@@ -6,7 +6,7 @@
     height: 100px;
     position: relative;
     top: 35px;
-    left: 130px;
+    left: 100px;
 }
 .notecard-icons-cnt{
     display:flex;
@@ -18,8 +18,8 @@
   margin-top: 100px;
 }
 .notecard-cnt.list-view {
-  margin-left: 27.5%;
-  width: 41.5vw;
+  margin-left: 29%;
+  width: 39.5vw;
 }
 .notecard-title-cnt {
     position: relative;

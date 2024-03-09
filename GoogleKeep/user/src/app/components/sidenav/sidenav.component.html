@@ -1,18 +1,25 @@
+<div class="sidenav-icons-cnt">
+    <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="pin icon" class="note-icon" routerLink="/dashboard/notes"></mat-icon>
+    <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
+    <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
+    <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon" routerLink="/dashboard/archive"></mat-icon>
+    <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="pin icon" class="icon" routerLink="/dashboard/trash"></mat-icon>
+</div>
 <mat-drawer-container class="example-container" [hasBackdrop]="false">
-    <mat-drawer #drawer [mode]="'over'" [opened]="drawerState">
+    <mat-drawer #drawer [mode]="'over'" [opened]="drawerState" style="background-color: #FAFAFA;">
         <div class="links">
-        <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="pin icon" class="note-icon"></mat-icon> 
+        <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="pin icon" class="res-note-icon"></mat-icon> 
         <span routerLink="/dashboard/notes" class="redirect">Notes</span><br><br>
-        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
-        <span class="redirect">Reminders</span><br><br>
-        <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon> 
-        <span class="redirect">Edit labels</span><br><br>
+        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="pin icon" class="res-icon"></mat-icon> 
+        <span class="reminder">Reminders</span><br><br>
+        <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="pin icon" class="res-icon"></mat-icon> 
+        <span class="edit">Edit labels</span><br><br>
         <div (click)="archiveClick()">
-        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="icon"></mat-icon>
+        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="pin icon" class="res-icon"></mat-icon>
         </div> 
         <span routerLink="/dashboard/archive" class="archive-redirect">Archive</span><br><br>
         <div class="trash-icon">
-        <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="pin icon"></mat-icon> 
+        <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="pin icon" class="res-trash-icon"></mat-icon> 
         <span routerLink="/dashboard/trash" class="trash-redirect">Trash</span>
         </div>
         </div>

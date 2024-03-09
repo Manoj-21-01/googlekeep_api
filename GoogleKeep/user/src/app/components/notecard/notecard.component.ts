@@ -77,7 +77,6 @@ export class NotecardComponent implements OnInit {
      },
      error => {console.error('Error:',error);}
     );
-    this.ngOnInit();
   }
 
   //unarchive note

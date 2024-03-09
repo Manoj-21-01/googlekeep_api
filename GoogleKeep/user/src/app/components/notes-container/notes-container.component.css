@@ -1,7 +1,4 @@
-@media only screen and (min-width: 768px){
-  .notehead {
-    /* border: 1px solid red; */
-  }
+@media only screen and (min-width: 769px){
   .note-card {
     display: flex;
     flex-direction: row;
@@ -23,6 +20,7 @@
 }
 
 @media only screen and (max-width: 768px){
+  
   .note-card {
       display: flex;
       flex-direction: row;

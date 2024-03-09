@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user-services/user.service';
-
+import { Router } from '@angular/router';
 
 @Component({ 
   selector: 'app-register', 
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     
   }
-    constructor(private formBuilder: FormBuilder, public userService: UserService) {
+    constructor(private formBuilder: FormBuilder, public userService: UserService, public router: Router) {
       this.registerForm = this.formBuilder.group({
         firstName: ['',[Validators.required, Validators.minLength(3)]],
         lastName: ['',[Validators.required, Validators.minLength(3)]],
@@ -39,7 +39,10 @@ export class RegisterComponent implements OnInit {
             "email": email,
             "password": password,
             "service":"advance"
-          }).subscribe((result)=>{console.log(result);},error=>{console.log(error);});
+          }).subscribe((result)=>{
+            this.router.navigate(['/login']);
+            alert("User registered sucessfully");
+            console.log(result);},error=>{console.log(error);});
           console.log(this.registerForm.value);
         }
         
