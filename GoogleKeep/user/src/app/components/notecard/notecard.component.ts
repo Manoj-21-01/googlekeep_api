@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, ChangeDetectorRef, OnInit, Output, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpService } from 'src/app/services/http-services/http.service';
@@ -19,13 +19,15 @@ interface NoteObj {
 @Component({
   selector: 'app-notecard',
   templateUrl: './notecard.component.html',
-  styleUrls: ['./notecard.component.css']
+  styleUrls: ['./notecard.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotecardComponent implements OnInit {
+export class NotecardComponent implements OnChanges {
   @Input() noteDetails!: NoteObj;
   @Input() viewMode: boolean = true;
+  @Output() noteChange = new EventEmitter<void>();
   takeNote: boolean = true;
-  ngOnInit(){ }
+  
   logRemainder(){
     console.log("Remainder");
   }
@@ -35,7 +37,8 @@ export class NotecardComponent implements OnInit {
     sanitizer: DomSanitizer,
     private httpService: HttpService,
     public noteService: NoteService,
-    public shiftService: ShiftService
+    public shiftService: ShiftService,
+    private cdr: ChangeDetectorRef
   ) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('collabrator-icon', sanitizer.bypassSecurityTrustHtml(COLLABRATOR_ICON));
@@ -47,6 +50,8 @@ export class NotecardComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('restore-icon', sanitizer.bypassSecurityTrustHtml(RESTORE_ICON));
     iconRegistry.addSvgIconLiteral('delete-forever-icon', sanitizer.bypassSecurityTrustHtml(DELETE_FOREVER_ICON));
     this.shiftService.shiftReqd$.subscribe((data) => this.takeNote=data);
+  }
+  ngOnChanges() {
   }
   // colour functionality
   changeColor(color: string): void {
@@ -74,9 +79,13 @@ export class NotecardComponent implements OnInit {
      this.noteService.archiveNoteCall(obj1).subscribe(
       ()=>{
       console.log("Note Archived successfully");
+      this.getAllNotes();
      },
      error => {console.error('Error:',error);}
     );
+  }
+  getAllNotes() {
+    throw new Error('Method not implemented.');
   }
 
   //unarchive note

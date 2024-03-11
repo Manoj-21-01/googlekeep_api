@@ -24,10 +24,10 @@
         <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="pin icon" class="img-icon" matTooltip="Image"></mat-icon> 
         <mat-icon *ngIf="noteDetails.isArchived" (click)="unarchiveNote(noteDetails)" svgIcon="unarchive-icon" aria-hidden="false" aria-label="unarchive icon" class="unarchive-icon" matTooltip="Unarchive"></mat-icon>
         <mat-icon *ngIf="!noteDetails.isArchived" (click)="archiveNote(noteDetails)" svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon" class="archive-icon" matTooltip="Archive"></mat-icon>
+        <mat-icon *ngIf="!noteDetails.isDeleted" (click)="deleteNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon" matTooltip="Delete" class="delete-cnt-icon" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}"></mat-icon>
         </div>
         <div class="delete-cnt" >
         <mat-icon *ngIf="noteDetails.isDeleted" (click)="deletePermanently(noteDetails)" svgIcon="delete-forever-icon" aria-hidden="false" aria-label="delete forever icon"  class="delete-forever-icon" matTooltip="Delete forever"></mat-icon>
-        <mat-icon *ngIf="!noteDetails.isDeleted" (click)="deleteNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon" matTooltip="Delete" class="delete-cnt-icon" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}"></mat-icon>
         <mat-icon *ngIf="noteDetails.isDeleted" (click)="restoreNote(noteDetails)" svgIcon="restore-icon" aria-hidden="false" aria-label="restore icon" matTooltip="Restore"></mat-icon>
         </div>
     </div>

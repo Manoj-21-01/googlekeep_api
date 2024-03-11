@@ -9,10 +9,15 @@
     left: 100px;
 }
 .notecard-icons-cnt{
+    padding-left: 10px;
     display:flex;
     gap:8%;
     position: relative;
     top: 52px;
+    display: none;
+}
+.notecard-cnt:hover .notecard-icons-cnt {
+  display: block;
 }
 .notecard-cnt.top-shift {
   margin-top: 100px;
@@ -35,13 +40,21 @@
     cursor: pointer;
     display: flex;
     gap: 1px;
+    mix-blend-mode: multiply;
+}
+.notecard-cnt:hover .delete-cnt {
+  display: block;
 }
 .delete-cnt-icon {
+  cursor: pointer;
   mix-blend-mode: multiply;
 }
 .delete-cnt-icon.list-view {
   position: relative;
   right: 30px;
+}
+.notecard-icons:hover .delete-forever-icon {
+  display: block;
 }
 .delete-forever-icon {
   margin-right: 15px;
@@ -79,11 +92,14 @@
     margin-right: 15px;
   }
   .unarchive-icon {
-    margin-left: 10px;
+    margin-left: 0px;
+    padding-right: 10px;
+    font-size: 15px;
     cursor: pointer;
   }
   .archive-icon {
     padding-left: 5px;
+    padding-right: 15px;
     cursor: pointer;
   }
 }
