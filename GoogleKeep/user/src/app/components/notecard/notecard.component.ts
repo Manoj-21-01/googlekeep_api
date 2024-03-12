@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, ChangeDetectorRef, OnInit, Output, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, ChangeDetectorRef, OnInit, Output, ChangeDetectionStrategy, SimpleChanges, OnChanges } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpService } from 'src/app/services/http-services/http.service';
@@ -22,12 +22,16 @@ interface NoteObj {
   styleUrls: ['./notecard.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NotecardComponent implements OnChanges {
+export class NotecardComponent implements OnInit {
   @Input() noteDetails!: NoteObj;
   @Input() viewMode: boolean = true;
   @Output() noteChange = new EventEmitter<void>();
+  @Input() getNoteList : any
+  @Output() updateNoteList = new EventEmitter<NoteObj>();
+  @Output() updateList = new EventEmitter<NoteObj>();
   takeNote: boolean = true;
-  
+  noteList: NoteObj[] = [];
+  filteredNoteList: NoteObj[] = [];
   logRemainder(){
     console.log("Remainder");
   }
@@ -37,8 +41,7 @@ export class NotecardComponent implements OnChanges {
     sanitizer: DomSanitizer,
     private httpService: HttpService,
     public noteService: NoteService,
-    public shiftService: ShiftService,
-    private cdr: ChangeDetectorRef
+    public shiftService: ShiftService
   ) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('collabrator-icon', sanitizer.bypassSecurityTrustHtml(COLLABRATOR_ICON));
@@ -49,10 +52,12 @@ export class NotecardComponent implements OnChanges {
     iconRegistry.addSvgIconLiteral('trash-icon', sanitizer.bypassSecurityTrustHtml(TRASH_ICON));
     iconRegistry.addSvgIconLiteral('restore-icon', sanitizer.bypassSecurityTrustHtml(RESTORE_ICON));
     iconRegistry.addSvgIconLiteral('delete-forever-icon', sanitizer.bypassSecurityTrustHtml(DELETE_FOREVER_ICON));
-    this.shiftService.shiftReqd$.subscribe((data) => this.takeNote=data);
+    this.shiftService.shiftReqd$.subscribe((response => {this.takeNote = response}))
+
   }
-  ngOnChanges() {
+  ngOnInit() {  
   }
+  
   // colour functionality
   changeColor(color: string): void {
     this.noteDetails.color = color;
@@ -79,13 +84,10 @@ export class NotecardComponent implements OnChanges {
      this.noteService.archiveNoteCall(obj1).subscribe(
       ()=>{
       console.log("Note Archived successfully");
-      this.getAllNotes();
+      this.updateNoteList.emit(noteDetails);
      },
      error => {console.error('Error:',error);}
     );
-  }
-  getAllNotes() {
-    throw new Error('Method not implemented.');
   }
 
   //unarchive note
@@ -99,12 +101,13 @@ export class NotecardComponent implements OnChanges {
      this.noteService.archiveNoteCall(obj1).subscribe(
       ()=>{
       console.log("Note unArchived successfully");
+      this.updateNoteList.emit(noteDetails);
      },
      error => {console.error('Error:',error);}
     );
   }
 
-  //deleteNote 
+  
   deleteNote(noteDetails : any): void {
     this.noteDetails.isDeleted = true;
     console.log(noteDetails);
@@ -113,11 +116,12 @@ export class NotecardComponent implements OnChanges {
       "isDeleted":true
      }
      this.noteService.deleteNoteCall(obj1).subscribe(
-      ()=>{console.log("Note Deleted successfully")},
+      ()=>{console.log("Note Deleted successfully")
+      this.updateNoteList.emit(noteDetails);
+    },
       error =>{console.log(error);}
     );
   }
-
   restoreNote(noteDetails : any): void{
     this.noteDetails.isDeleted = false;
     console.log(noteDetails);
@@ -126,7 +130,9 @@ export class NotecardComponent implements OnChanges {
       "isDeleted":false
     }
     this.noteService.deleteNoteCall(obj1).subscribe(
-      ()=>{console.log("Note restored successfully")},
+      ()=>{console.log("Note restored successfully")
+      this.filteredNoteList.push(noteDetails);
+    },
       error =>{console.log(error);}
     );
   }
@@ -136,7 +142,9 @@ export class NotecardComponent implements OnChanges {
       "noteIdList":[this.noteDetails.id],
     }
     this.noteService.deleteForeverCall(obj1).subscribe(
-      ()=>{console.log("Note Deleted permanently")},
+      ()=>{console.log("Note Deleted permanently")
+      this.getNoteList();
+    },
       error =>{console.log(error);}
     );
   }

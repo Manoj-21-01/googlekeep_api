@@ -18,14 +18,14 @@ interface NoteObj {
 })
 
 export class CreateNoteComponent  {
-  takeNote: boolean=true
+  takeNote: boolean=true;
   title:string =""
   description: string=""
   @Output() updateList= new EventEmitter <NoteObj>()
   noteDetails: any;
 
-  constructor(public noteService:NoteService, public httpService: HttpService, public shiftService:ShiftService){
-    this.shiftService.check(this.takeNote);
+  constructor(public noteService:NoteService, public httpService: HttpService, public shiftService: ShiftService){
+    
   }
 
   changeColor(color: string): void {
@@ -44,7 +44,7 @@ export class CreateNoteComponent  {
   }
   handleCreateNote(action : string ){
     this.takeNote=!this.takeNote
-    this.shiftService.check(this.takeNote);
+    this.shiftService.check(this.takeNote)
     if (action =='close'){
       // we have to add api here
         const noteObj:NoteObj = {

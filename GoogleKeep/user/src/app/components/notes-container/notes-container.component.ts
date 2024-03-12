@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, SimpleChanges, ViewChild } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ARCHIVE_ICON, BRUSH_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, MORE_ICON, REDO_ICON, REMINDER_ICON, TICK_ICON, UNDO_ICON } from 'src/app/assests/svg-icons';
@@ -38,6 +38,12 @@ export class NotesContainerComponent {
 
   }
   ngOnInit(): void {
+    this.getNoteList()
+  }
+
+  
+  getNoteList(){
+    console.log("parent getnote")
     this.noteService.getNoteListCall().subscribe((result: any)=>{
       this.noteList=result.data.data      
       this.filteredNoteList=this.noteList.filter(notes => !notes.isArchived && !notes.isDeleted)
@@ -47,8 +53,16 @@ export class NotesContainerComponent {
   }
 
   updateNoteList($event:NoteObj ){
+    this.filteredNoteList=this.filteredNoteList.filter((noteObj)=>{
+      return noteObj.id != $event.id
+    })
     console.log($event);
-    this.noteList=[$event, ...this.noteList]
+  }
+  updateList($event:NoteObj ){
+    this.filteredNoteList=this.filteredNoteList.filter((noteObj)=>{
+      return noteObj.id == $event.id
+    })
+    console.log($event);
   }
 
 }

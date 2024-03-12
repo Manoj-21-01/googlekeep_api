@@ -57,4 +57,4 @@ export class HttpService {
   logOutUser(){
     return this.http.post(`${this.baseUrl}/user/logout`,{},{headers: this.authHeader});
   }
-}
+ }

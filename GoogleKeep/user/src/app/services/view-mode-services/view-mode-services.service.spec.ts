@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ViewModeServicesService } from './view-mode-services.service';
+import { ViewModeService } from './view-mode-services.service';
 
 describe('ViewModeServicesService', () => {
-  let service: ViewModeServicesService;
+  let service: ViewModeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ViewModeServicesService);
+    service = TestBed.inject(ViewModeService);
   });
 
   it('should be created', () => {
