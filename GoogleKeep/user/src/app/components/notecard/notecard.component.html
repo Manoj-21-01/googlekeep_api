@@ -27,7 +27,7 @@
         <mat-icon *ngIf="!noteDetails.isDeleted" (click)="deleteNote(noteDetails)" svgIcon="trash-icon" aria-hidden="false" aria-label="trash icon" matTooltip="Delete" class="delete-cnt-icon" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}"></mat-icon>
         </div>
         <div class="delete-cnt" >
-        <mat-icon *ngIf="noteDetails.isDeleted" (click)="deletePermanently(noteDetails)" svgIcon="delete-forever-icon" aria-hidden="false" aria-label="delete forever icon"  class="delete-forever-icon" matTooltip="Delete forever"></mat-icon>
+        <mat-icon *ngIf="noteDetails.isDeleted" (click)="deleteNotePermanently(noteDetails)" svgIcon="delete-forever-icon" aria-hidden="false" aria-label="delete forever icon"  class="delete-forever-icon" matTooltip="Delete forever"></mat-icon>
         <mat-icon *ngIf="noteDetails.isDeleted" (click)="restoreNote(noteDetails)" svgIcon="restore-icon" aria-hidden="false" aria-label="restore icon" matTooltip="Restore"></mat-icon>
         </div>
     </div>

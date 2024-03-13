@@ -32,4 +32,10 @@ export class TrashContainerComponent {
       }
     );
   }
+
+  updateTrashList($event: NoteObj){
+    this.trashNotes = this.trashNotes.filter((noteObj)=>{
+      return noteObj.id!= $event.id;
+    })
+  }
 }

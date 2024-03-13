@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, ChangeDetectorRef, OnInit, Output, ChangeDetectionStrategy, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpService } from 'src/app/services/http-services/http.service';
-import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_ICON, MORE_ICON, DELETE_FOREVER_ICON, TRASH_ICON, UNARCHIVE_ICON, RESTORE_ICON } 
+import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_ICON, DELETE_FOREVER_ICON, TRASH_ICON, UNARCHIVE_ICON, RESTORE_ICON } 
 from 'src/app/assests/svg-icons';
 import { NoteService } from 'src/app/services/note-services/note.service';
 import { ShiftService } from 'src/app/services/shift-services/shift.service';
@@ -15,20 +15,25 @@ interface NoteObj {
     "isArchived": boolean,
     "isDeleted": boolean
   }
+interface Obj{
+  "action": string,
+  "data": NoteObj
+}
 
 @Component({
   selector: 'app-notecard',
   templateUrl: './notecard.component.html',
-  styleUrls: ['./notecard.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./notecard.component.css']
 })
 export class NotecardComponent implements OnInit {
   @Input() noteDetails!: NoteObj;
   @Input() viewMode: boolean = true;
   @Output() noteChange = new EventEmitter<void>();
   @Input() getNoteList : any
-  @Output() updateNoteList = new EventEmitter<NoteObj>();
-  @Output() updateList = new EventEmitter<NoteObj>();
+  @Output() updateNoteList = new EventEmitter<Obj>();
+  @Output() updateArchiveList = new EventEmitter<NoteObj>(); //retrieve unarchived notes
+  @Output() updateTrashList = new EventEmitter<NoteObj>();   //retrieve trash notes
+
   takeNote: boolean = true;
   noteList: NoteObj[] = [];
   filteredNoteList: NoteObj[] = [];
@@ -81,16 +86,38 @@ export class NotecardComponent implements OnInit {
       "noteIdList":[this.noteDetails.id],
       "isArchived":true
      }
+     const emitObj={
+      "action": "archiveNote",
+      "data":noteDetails
+     }
      this.noteService.archiveNoteCall(obj1).subscribe(
       ()=>{
       console.log("Note Archived successfully");
-      this.updateNoteList.emit(noteDetails);
+      this.updateNoteList.emit(emitObj);
      },
      error => {console.error('Error:',error);}
     );
   }
+  
+  deleteNote(noteDetails : any): void {
+    this.noteDetails.isDeleted = true;
+    console.log(noteDetails);
+     const obj1={
+      "noteIdList":[this.noteDetails.id],
+      "isDeleted":true
+     }
+     const emitObj={
+      "action": "deleteNote",
+      "data":noteDetails
+     }
+     this.noteService.deleteNoteCall(obj1).subscribe(
+      ()=>{console.log("Note Deleted successfully")
+      this.updateNoteList.emit(emitObj);
+    },
+      error =>{console.log(error);}
+    );
+  }
 
-  //unarchive note
   unarchiveNote(noteDetails : any): void {
     this.noteDetails.isArchived = false;
     console.log(noteDetails);
@@ -101,27 +128,12 @@ export class NotecardComponent implements OnInit {
      this.noteService.archiveNoteCall(obj1).subscribe(
       ()=>{
       console.log("Note unArchived successfully");
-      this.updateNoteList.emit(noteDetails);
+      this.updateArchiveList.emit(noteDetails);
      },
      error => {console.error('Error:',error);}
     );
   }
 
-  
-  deleteNote(noteDetails : any): void {
-    this.noteDetails.isDeleted = true;
-    console.log(noteDetails);
-     const obj1={
-      "noteIdList":[this.noteDetails.id],
-      "isDeleted":true
-     }
-     this.noteService.deleteNoteCall(obj1).subscribe(
-      ()=>{console.log("Note Deleted successfully")
-      this.updateNoteList.emit(noteDetails);
-    },
-      error =>{console.log(error);}
-    );
-  }
   restoreNote(noteDetails : any): void{
     this.noteDetails.isDeleted = false;
     console.log(noteDetails);
@@ -131,19 +143,19 @@ export class NotecardComponent implements OnInit {
     }
     this.noteService.deleteNoteCall(obj1).subscribe(
       ()=>{console.log("Note restored successfully")
-      this.filteredNoteList.push(noteDetails);
+      this.updateTrashList.emit(noteDetails)
     },
       error =>{console.log(error);}
     );
   }
 
-  deletePermanently(noteDetails : any): void{
+  deleteNotePermanently(noteDetails : any): void{
     const obj1={
       "noteIdList":[this.noteDetails.id],
     }
     this.noteService.deleteForeverCall(obj1).subscribe(
       ()=>{console.log("Note Deleted permanently")
-      this.getNoteList();
+      this.updateTrashList.emit(noteDetails)
     },
       error =>{console.log(error);}
     );

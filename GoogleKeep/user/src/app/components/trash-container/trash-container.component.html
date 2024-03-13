@@ -1,7 +1,7 @@
 <div class="trash-notes-cnt">
 <div class="trashnotes" [ngClass]="{'grid-view': viewMode, 'list-view': !viewMode}">
     <div *ngFor="let note of trashNotes" class="trashnotes-cnt">
-          <app-notecard [noteDetails]="note" [viewMode]="viewMode"></app-notecard>
+          <app-notecard [noteDetails]="note" [viewMode]="viewMode" (updateTrashList)="updateTrashList($event)"></app-notecard>
     </div>
 </div>
 </div>

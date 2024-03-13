@@ -9,8 +9,13 @@ interface NoteObj {
   "description":string,
   "color": string,
   "id":string,
-  "isArchived": boolean,
+"isArchived": boolean,
   "isDeleted": boolean
+}
+
+interface noteObj {
+  "action":string
+  "data":NoteObj
 }
 @Component({
   selector: 'app-notes-container',
@@ -46,23 +51,22 @@ export class NotesContainerComponent {
     console.log("parent getnote")
     this.noteService.getNoteListCall().subscribe((result: any)=>{
       this.noteList=result.data.data      
-      this.filteredNoteList=this.noteList.filter(notes => !notes.isArchived && !notes.isDeleted)
+      this.noteList=this.noteList.filter(notes => !notes.isArchived && !notes.isDeleted)
       console.log(this.noteList);
       console.log(this.filteredNoteList);
       },(error)=>{console.log(error)})
   }
 
-  updateNoteList($event:NoteObj ){
-    this.filteredNoteList=this.filteredNoteList.filter((noteObj)=>{
-      return noteObj.id != $event.id
+  updateNoteList($event:noteObj){
+    if($event.action==='addNote')
+    {
+      this.noteList=[$event.data, ...this.noteList];      
+    }
+    if($event.action==='archiveNote' || $event.action==='deleteNote'){
+    this.noteList=this.noteList.filter((noteObj)=>{
+      return noteObj.id != $event.data.id;
     })
-    console.log($event);
   }
-  updateList($event:NoteObj ){
-    this.filteredNoteList=this.filteredNoteList.filter((noteObj)=>{
-      return noteObj.id == $event.id
-    })
-    console.log($event);
   }
 
 }

@@ -11,6 +11,10 @@ interface NoteObj {
   "isArchived": boolean,
   "isDeleted": boolean
 }
+interface Obj{
+  "action":string,
+  "data": NoteObj
+}
 @Component({
   selector: 'app-create-note',
   templateUrl: './create-note.component.html',
@@ -21,7 +25,7 @@ export class CreateNoteComponent  {
   takeNote: boolean=true;
   title:string =""
   description: string=""
-  @Output() updateList= new EventEmitter <NoteObj>()
+  @Output() updateList= new EventEmitter <Obj>();
   noteDetails: any;
 
   constructor(public noteService:NoteService, public httpService: HttpService, public shiftService: ShiftService){
@@ -57,8 +61,12 @@ export class CreateNoteComponent  {
           // "reminder": "",
           "id":"12346"
         };
+        const emitObj={
+          "action":'addNote',
+          "data":noteObj
+        }
       this.noteService.addNoteCall(noteObj).subscribe(result=>{
-        this.updateList.emit(noteObj);
+        this.updateList.emit(emitObj);
       });
       
     }
