@@ -13,8 +13,8 @@
             <mat-label>First Name</mat-label>
             <input matInput placeholder="First Name*" formControlName="firstName">
           </mat-form-field>
-          <div style="color: red;" *ngIf="submitted && f?.['firstName']?.errors?.['minlength']" id="validator-cnt">First Name should contain atleast 3 characters</div>
-            <div style="color: red;" *ngIf="submitted && f?.['firstName']?.errors?.['required']" id="validator-cnt">First Name is required</div>
+          <div class="validator-color-cnt" *ngIf="submitted && f?.['firstName']?.errors?.['minlength']" id="validator-cnt">First Name should contain atleast 3 characters</div>
+            <div class="validator-color-cnt" *ngIf="submitted && f?.['firstName']?.errors?.['required']" id="validator-cnt">First Name is required</div>
         </div>
         <span id="names">ln</span>
         <div class="lastName">
@@ -22,8 +22,8 @@
           <mat-label>Last Name</mat-label>
           <input matInput placeholder="Last Name*" formControlName="lastName" id="lastName">
         </mat-form-field>
-        <div style="color: red;" *ngIf="submitted && f?.['lastName']?.errors?.['minlength']" id="validator-cnt">Last Name should contain atleast 3 characters</div>
-          <div style="color: red;" *ngIf="submitted && f?.['lastName']?.errors?.['required']" id="validator-cnt">Last Name is required</div>
+        <div class="validator-color-cnt" *ngIf="submitted && f?.['lastName']?.errors?.['minlength']" id="validator-cnt">Last Name should contain atleast 3 characters</div>
+          <div class="validator-color-cnt" *ngIf="submitted && f?.['lastName']?.errors?.['required']" id="validator-cnt">Last Name is required</div>
       </div>
         </div>
 
@@ -37,8 +37,8 @@
           <input matInput placeholder="username" formControlName="email" id="username">
           <label for="username" class="condition">you can use letters, numbers & periods</label>
         </mat-form-field>
-        <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['required']" id="validator-cnt">Email is required</div>
-          <div style="color: red;" *ngIf="submitted && f?.['email']?.errors?.['email']" id="validator-cnt">Email must be a valid email address</div>
+        <div class="validator-color-cnt" *ngIf="submitted && f?.['email']?.errors?.['required']" id="validator-cnt">Email is required</div>
+          <div class="validator-color-cnt" *ngIf="submitted && f?.['email']?.errors?.['email']" id="validator-cnt">Email must be a valid email address</div>
         <p class="email">Use my current email instead</p>
         <div class="password">
           <div class="pwd-cnt">
@@ -47,8 +47,8 @@
               <mat-label>Password</mat-label>
               <input matInput placeholder="Password*" formControlName="password" id="password" type="password">
               </mat-form-field>
-              <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['required']" id="pwd-validator-cnt">Password is required</div>
-              <div style="color: red;" *ngIf="submitted && f?.['password']?.errors?.['minlength']" id="pwd-validator-cnt">Password must be atleast 6 characters</div>
+              <div class="validator-color-cnt" *ngIf="submitted && f?.['password']?.errors?.['required']" id="pwd-validator-cnt">Password is required</div>
+              <div class="validator-color-cnt" *ngIf="submitted && f?.['password']?.errors?.['minlength']" id="pwd-validator-cnt">Password must be atleast 6 characters</div>
             </div>
           <span id="names">ln</span>
           <div class="confirm-password-cnt">

@@ -38,6 +38,9 @@
 .l6 {
   color: red;
 }
+.validator-color-cnt {
+  color: red;
+}
 #create {
   margin-bottom: 3%;
 }
@@ -134,6 +137,9 @@ label {
   color: green;
 }
 .l6 {
+  color: red;
+}
+.validator-color-cnt {
   color: red;
 }
 #create {

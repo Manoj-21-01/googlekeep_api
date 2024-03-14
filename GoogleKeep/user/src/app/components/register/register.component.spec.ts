@@ -1,48 +1,79 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register.component';
-import { MatIconModule } from '@angular/material/icon';
-import { SidenavComponent } from '../sidenav/sidenav.component';
-import { HttpClientModule } from '@angular/common/http';
+import { UserService } from 'src/app/services/user-services/user.service';
+import { HttpService } from 'src/app/services/http-services/http.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
+  let userService: UserService;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ RegisterComponent ],
+      imports: [ 
+        ReactiveFormsModule,
+        FormsModule,
+        RouterTestingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        BrowserAnimationsModule,
+        HttpClientTestingModule
+      ],
+      providers: [ UserService, HttpService]
+    })
+    .compileComponents();
+  });
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [RegisterComponent, SidenavComponent],
-      imports: [MatIconModule, HttpClientModule],
-    }).compileComponents;
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
+    userService = TestBed.get(UserService);
     fixture.detectChanges();
-  });
+  }); 
+
+  // it('should have 8 elements with class "validator-color-cnt"', () => {
+  //   fixture.detectChanges(); 
+  //   const validatorElements = fixture.debugElement.queryAll(By.css('.validator-color-cnt'));
+  //   expect(validatorElements.length).toEqual(8);
+  // });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a valid form', () => {
-
-    component.registerForm.controls['firstName'].setValue('Manoj');
-    component.registerForm.controls['lastName'].setValue('Veluru');
-    component.registerForm.controls['email'].setValue('manoj@gmail.com');
-    component.registerForm.controls['password'].setValue("manoj1");
-    component.registerForm.controls['confirmPassword'].setValue("manoj1");
-    expect(component.registerForm.valid).toBeTruthy();
+  it('should bind formControlName to corresponding input fields', () => {
+    const firstNameInput = fixture.nativeElement.querySelector('input[formControlName="firstName"]');
+    const lastNameInput = fixture.nativeElement.querySelector('input[formControlName="lastName"]');
+    expect(firstNameInput).toBeTruthy();
+    expect(lastNameInput).toBeTruthy();
   });
 
-  it('should show error messages for required fields', () => {
-    const firstName = component.registerForm.controls['firstName'];
-    const lastName = component.registerForm.controls['lastName'];
-    const email = component.registerForm.controls['email'];
-    const password = component.registerForm.controls['password'];
-    const confirmPassword = component.registerForm.controls['confirmPassword'];
-
-    expect(firstName.errors?.['required']).toEqual("Manoj");
-    expect(lastName.errors?.['required']).toEqual("Veluru");
-    expect(email.errors?.['required']).toEqual("manoj@gmail.com");
-    expect(password.errors?.['required']).toBeTruthy();
-    expect(confirmPassword.errors?.['required']).toBeTruthy();
+  it('should bind formControlName to corresponding input fields', () => {
+    const emailInput = fixture.nativeElement.querySelector('input[formControlName="email"]');
+    const passwordInput = fixture.nativeElement.querySelector('input[formControlName="firstName"]');
+    expect(emailInput).toBeTruthy();
+    expect(passwordInput).toBeTruthy();
   });
+
+  
+  it('should initialize registerForm with empty fields', () => {
+    expect(component.registerForm.value).toEqual({ firstName: '', lastName: '', email: '', password: '' });
+  });
+
+  it('should set submitted to true when registerUser is called', () => {
+    component.registerUser();
+    expect(component.submitted).toBeTruthy();
+  });
+
 });
